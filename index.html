@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>행정안전부 표준 공문 서식 요약 및 비교 뷰어</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-area">
+        <span class="badge">행정안전부 표준서식</span>
+        <h1>공문서 표준 서식 요약 & 가이드 웹 앱</h1>
+      </div>
+      <p class="subtitle">
+        행정 효율과 협업 촉진에 관한 규정 시행규칙 별지 서식 요약 및 맞춤 가이드
+      </p>
+      
+      <!-- Stats summary cards -->
+      <div class="quick-summary-bar">
+        <div class="stat-card">
+          <span class="stat-label">등록된 서식</span>
+          <span class="stat-value">3종</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">공통 규격</span>
+          <span class="stat-value">A4 (210×297mm) 백상지 80g/㎡</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">관련 법령</span>
+          <span class="stat-value">행정효율규정 시행규칙</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation & Filters -->
+    <nav class="nav-tabs">
+      <button class="tab-btn active" data-tab="list">📋 공문 서식별 요약</button>
+      <button class="tab-btn" data-tab="compare">⚖️ 3종 서식 한눈에 비교</button>
+      <button class="tab-btn" data-tab="guide">💡 공문서 작성 핵심 규칙</button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-container">
+      
+      <!-- TAB 1: Document List & Detail View -->
+      <section id="tab-list" class="tab-pane active">
+        <!-- Controls: Search & Filter -->
+        <div class="controls-bar">
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="서식명, 용도, 필드 검색 (예: 대통령, 접수, 기안자)...">
+          </div>
+          <div class="filter-chips">
+            <button class="chip active" data-filter="all">전체보기</button>
+            <button class="chip" data-filter="대외">대외·일반</button>
+            <button class="chip" data-filter="내부">내부결재</button>
+            <button class="chip" data-filter="고위">대통령·국무총리</button>
+          </div>
+        </div>
+
+        <div class="doc-cards-grid" id="docCardsGrid">
+          <!-- Dynamically injected via JS -->
+        </div>
+
+        <!-- Detail Modal / Drawer -->
+        <div class="modal-overlay" id="detailModal">
+          <div class="modal-content">
+            <button class="modal-close" id="modalCloseBtn">&times;</button>
+            <div id="modalBody">
+              <!-- Dynamically populated -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 2: Comparison Matrix -->
+      <section id="tab-compare" class="tab-pane">
+        <div class="section-intro">
+          <h2>📊 3종 표준 공문 서식 비교표</h2>
+          <p>상황과 결재권자, 발송 여부에 따라 올바른 공문 서식을 선택하세요.</p>
+        </div>
+        <div class="table-responsive">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>구분 항목</th>
+                <th class="col-type1">별지 제1호서식<br><span class="sub-th">일반기안문(시행문겸용)</span></th>
+                <th class="col-type2">별지 제2호서식<br><span class="sub-th">내부결재기안문</span></th>
+                <th class="col-type3">별지 제3호서식<br><span class="sub-th">대통령결재기안문</span></th>
+              </tr>
+            </thead>
+            <tbody id="compareTableBody">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TAB 3: Writing Guidelines -->
+      <section id="tab-guide" class="tab-pane">
+        <div class="section-intro">
+          <h2>💡 공문서 작성 기본 원칙 및 유의사항</h2>
+          <p>공문 작성 시 자주 혼동하거나 누락하기 쉬운 필수 규칙입니다.</p>
+        </div>
+
+        <div class="guide-grid">
+          <div class="guide-card">
+            <div class="guide-icon">🚫</div>
+            <h3>인쇄·표시 생략 항목 (비고 규정)</h3>
+            <p>공문서를 인쇄하거나 작성할 때 용어 자체는 표시하지 않고 해당 <strong>내용만</strong> 기재해야 합니다:</p>
+            <div class="tag-cloud">
+              <span class="guide-tag">행정기관명</span>
+              <span class="guide-tag">발신명</span>
+              <span class="guide-tag">기안자/검토자/결재권자</span>
+              <span class="guide-tag">직위(직급) 서명</span>
+              <span class="guide-tag">처리과명-연도별 일련번호</span>
+              <span class="guide-tag">도로명주소</span>
+              <span class="guide-tag">홈페이지 주소</span>
+              <span class="guide-tag">공무원의 전자우편주소</span>
+              <span class="guide-tag">공개 구분</span>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-icon">✍️</div>
+            <h3>결재란 및 수신·발신 명칭 조정 규칙</h3>
+            <ul>
+              <li><strong>내부결재 (별지 2호):</strong> 결재란의 크기 및 결재란 수는 기관의 결재 라인 필요에 따라 유연하게 증감 조정 가능.</li>
+              <li><strong>대통령결재 (별지 3호):</strong> 국무총리 결재를 거치는 문서의 경우 해당 결재 절차에 맞게 직위/직급을 변경하여 표시.</li>
+              <li><strong>용어 치환 가능:</strong> '수신' ➡️ <strong>'받는 자'</strong>, '발신' ➡️ <strong>'보내는 자'</strong>로 변경 사용 가능.</li>
+            </ul>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-icon">📏</div>
+            <h3>표준 용지 규격 및 지질</h3>
+            <ul>
+              <li><strong>규격:</strong> A4 규격 (210㎜ × 297㎜)</li>
+              <li><strong>지질:</strong> 백상지 80g/㎡ 기준 사용</li>
+              <li><strong>하단 비고란:</strong> 양식 하단에 명시된 비고(안내문)는 실제 공문 서식에는 출력·포함되지 아니함.</li>
+            </ul>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-icon">🗂️</div>
+            <h3>항목 구분 체계 (표준 공문 체계)</h3>
+            <p>본문 내용 전개 시 다음 8단계 항목 번호 체계를 준수합니다:</p>
+            <div class="level-flow">
+              <span class="lvl">1.</span> ➡️
+              <span class="lvl">가.</span> ➡️
+              <span class="lvl">1)</span> ➡️
+              <span class="lvl">가)</span> ➡️
+              <span class="lvl">(1)</span> ➡️
+              <span class="lvl">(가)</span> ➡️
+              <span class="lvl">①</span> ➡️
+              <span class="lvl">㉮</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>행정 효율과 협업 촉진에 관한 규정 시행규칙 [별지 제1호·제2호·제3호서식] 기준 요약 웹 애플리케이션</p>
+      <p class="copyright">별도 설치나 서버 없이 브라우저에서 바로 동작합니다.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
